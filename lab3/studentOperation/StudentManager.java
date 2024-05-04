@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 public class StudentManager {
   private ArrayList<Student> studentList;
+  private NotesManager NotesManager;
   public StudentManager(){
     studentList = new ArrayList<>();
+    NotesManager = new NotesManager();
   }
   public void addStudent(Student s){
     studentList.add(s);
@@ -39,6 +41,16 @@ public class StudentManager {
   public void displayStudents(){
     for(Student student : studentList){
       System.out.println("id = " + student.getNumber()+"\n name: " + student.getName());
+    }
+  }
+  public void displayNotesForStudent(int studentNumber) {
+    for (Notes note : NotesManager.notesList) {
+      if (note.getNumber() == studentNumber) {
+        System.out.println("Student number: " + note.getNumber());
+        System.out.println("Note code: " + note.getCode());
+        System.out.println("Note: " + note.getNote());
+        System.out.println("--------------------");
+      }
     }
   }
 }
